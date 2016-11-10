@@ -1,0 +1,37 @@
+/complain <user> <complaint>
+
+/complaints
+    list [user]
+    add [user] <complaint>
+    remove <num>
+    edit <text|time> [num] <newComplaint | newTime>
+    clear [user]
+
+/complainbox
+    enable [user]
+    disable [user]
+
+    ban
+        enable
+        disable
+        number
+        time
+
+    kick
+        enable
+        disable
+        number
+        time
+
+    mute
+        enable
+        disable
+        number
+        time
+
+    teleport
+        enable
+        disable
+        number
+        time
+        position [set | clear]
