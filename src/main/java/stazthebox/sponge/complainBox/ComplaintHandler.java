@@ -90,4 +90,23 @@ public class ComplaintHandler {
         }
         return fin;
     }
+
+    public int clearComplaints(User user) {
+        return clearComplaints(user.getUniqueId());
+    }
+
+    public int clearComplaints(UUID uuid) {
+        val set = getComplaints(uuid);
+        val old = set.size();
+        set.clear();
+        return old;
+    }
+
+    public int clear() {
+        int fin = 0;
+        for (UUID uuid : map.keySet()) {
+            fin += clearComplaints(uuid);
+        }
+        return fin;
+    }
 }

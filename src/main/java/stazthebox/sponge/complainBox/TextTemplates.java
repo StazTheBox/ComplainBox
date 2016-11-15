@@ -32,6 +32,13 @@ public class TextTemplates {
     COMPLAINT = of(PREFIX, arg("complaint", DATA), CONSTANT, " Argued At: ",
             arg("time", DATA)),
 
-    NO_COMPLAINT = of(PREFIX, CONSTANT, "There are currently no complaints against ", arg("user", DATA));
+    NO_COMPLAINT = of(PREFIX, CONSTANT, "There are currently no complaints against ", arg("user", DATA)),
 
+    NUMBER_OF_COMPLAINTS_CLEARED = of(PREFIX, CONSTANT, "You have cleared ", arg("number", DATA), CONSTANT,
+            " of complaints from user ", arg("user", DATA), CONSTANT, "."),
+
+    NUMBER_OF_COMPLAINTS_CLEARED_ALL = of(PREFIX, CONSTANT, "You have cleared ", arg("number", DATA), CONSTANT,
+            " complaints."),
+            COMPLAINT_SUCCSESSFULL = of(PREFIX, CONSTANT, "Complaint Successfull. ",
+                    arg("user", DATA), CONSTANT, " now has");
 }

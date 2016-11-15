@@ -9,7 +9,7 @@ import java.util.Date;
 public class StringUtils {
 
     public static String epochToHuman(long time) {
-        return epochToHuman(time, "MMM d, yy h:mm a");
+        return epochToHuman(time, "MMM d, yy. h:mm a");
     }
 
     public static String epochToHuman(long time, String format) {

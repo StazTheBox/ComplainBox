@@ -1,4 +1,4 @@
-package stazthebox.sponge.complainBox.command;
+package stazthebox.sponge.complainBox.command.commands;
 
 import lombok.val;
 import org.spongepowered.api.Sponge;
@@ -40,7 +40,7 @@ public class CommandList implements CommandExecutor {
     }
 
     private Set<Text> processResultAll() {
-        val list = ComplainBox.getInstance().getHandler().getMap();
+        val list = ComplainBox.getHandler().getMap();
         val service = Sponge.getServiceManager().getRegistration(UserStorageService.class).get().getProvider();
         val response = new HashSet<Text>();
 
@@ -58,7 +58,7 @@ public class CommandList implements CommandExecutor {
 
     private Collection<Text> processResultUser(User user) {
         // Let's get the players complaints!
-        val optionalList = ComplainBox.getInstance().getHandler().getOptionalComplaints(user);
+        val optionalList = ComplainBox.getHandler().getOptionalComplaints(user);
         if (optionalList.isPresent()) {
             val list = optionalList.get();
             val response = new HashSet<Text>();

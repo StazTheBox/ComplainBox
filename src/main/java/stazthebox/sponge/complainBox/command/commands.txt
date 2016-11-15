@@ -15,23 +15,23 @@
         enable
         disable
         number
-        time
+        cooldown
 
     kick
         enable
         disable
         number
-        time
+        cooldown
 
     mute
         enable
         disable
         number
-        time
+        cooldown
 
     teleport
         enable
         disable
         number
-        time
-        position [set | clear]
+        cooldown
+        position [set | clear] [<x> <y> <z>]

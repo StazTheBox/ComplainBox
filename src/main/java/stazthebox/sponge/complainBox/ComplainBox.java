@@ -16,8 +16,9 @@ import org.spongepowered.api.event.game.state.GameStoppingEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.text.Text;
 import stazthebox.sponge.api.SimpleConfig;
-import stazthebox.sponge.complainBox.command.CommandComplain;
-import stazthebox.sponge.complainBox.command.CommandList;
+import stazthebox.sponge.complainBox.command.commands.CommandClear;
+import stazthebox.sponge.complainBox.command.commands.CommandComplain;
+import stazthebox.sponge.complainBox.command.commands.CommandList;
 
 import java.io.IOException;
 import java.nio.file.Path;
@@ -40,26 +41,35 @@ public class ComplainBox {
 
     @Getter
     private static ComplainBox instance;
+
+
+    // Logging Workaround for "static loggers"
     @Inject
+    private void setLogger(Logger logger) {
+        ComplainBox.logger = logger;
+    }
+
     @Getter
-    private Logger logger;
+    private static Logger logger;
+
     @Inject
     @ConfigDir(sharedRoot = false)
-    private Path confPath;
+    private Path confDir;
 
     @Getter
     private SimpleConfig config;
 
     @Getter
-    private CommentedConfigurationNode configNode;
+    private static CommentedConfigurationNode configNode;
+
 
     @Getter
-    private ComplaintHandler handler = new ComplaintHandler();
+    private static ComplaintHandler handler = new ComplaintHandler();
 
     @Listener
     public void preInit(GamePreInitializationEvent event) {
         instance = this;
-        config = new SimpleConfig(this, confPath, "config.conf");
+        config = new SimpleConfig(this, confDir, "config.conf");
         reload();
     }
 
@@ -73,14 +83,8 @@ public class ComplainBox {
     private void buildCommands() {
         val man = Sponge.getCommandManager();
 
-        val complain = CommandSpec.builder().
-                description(Text.of("Complain about a player")).
-                permission("complainbox.complain").
-                arguments(
-                        GenericArguments.onlyOne(GenericArguments.user(Text.of("user"))),
-                        GenericArguments.remainingJoinedStrings(Text.of("complaint"))).
-                executor(new CommandComplain()).build();
-        man.register(this, complain, "complain");
+        val complain = new CommandComplain();
+        man.register(this, complain.getSpec(), "complain");
 
 
         // /complaints
@@ -94,7 +98,10 @@ public class ComplainBox {
         val complaints = CommandSpec.builder().
                 description(Text.of("List all of the complaints of a player")).
                 child(list, "list").
+                child(complain.getSpec(), "complain").
+                child(new CommandClear().getSpec(), "clear").
                 build();
+
         man.register(this, complaints, "complaints");
     }
 

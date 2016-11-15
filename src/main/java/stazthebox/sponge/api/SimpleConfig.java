@@ -43,6 +43,9 @@ public class SimpleConfig {
     }
 
     public void setupDirectories() throws IOException {
+        if (Files.notExists(configDir))
+            Files.createDirectory(configDir);
+
         if (Files.notExists(configDest))
             overwriteFile();
     }
@@ -54,6 +57,7 @@ public class SimpleConfig {
             asset.copyToFile(configDest);
             return true;
         } else {
+            Files.createFile(configDest);
             root = loader.createEmptyNode();
             return false;
         }
