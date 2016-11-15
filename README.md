@@ -6,15 +6,15 @@ Well simple as in it doesn't do much. But it has a lot of code! :)
 Just pop it into your plugins folder and go!
 
 # Commands
-*/ complain [user] [complaint]. Complain about the user and what they have done.
-*/complaints complain [user] [user] - Alias to /complain
-..*list [user] - View the complaints for this user. If user is omitted, view how many complaints everyone has.
-..*clear [user] - Clear all complaints for this user. If user is omitted, clear all of the complaints.
+* / complain [user] [complaint]. Complain about the user and what they have done.
+* /complaints complain [user] [user] - Alias to /complain
+..* list [user] - View the complaints for this user. If user is omitted, view how many complaints everyone has.
+..* clear [user] - Clear all complaints for this user. If user is omitted, clear all of the complaints.
 
 # Permissions
-*complainbox.list
-*complainbox.clear
-*complainbox.complain
+* complainbox.list
+* complainbox.clear
+* complainbox.complain
 
 # To Do
 - Add more permissions (list only yourself, others, etc)
