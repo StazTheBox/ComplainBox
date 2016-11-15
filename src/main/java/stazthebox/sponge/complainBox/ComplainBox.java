@@ -16,6 +16,7 @@ import org.spongepowered.api.event.game.state.GameStoppingEvent;
 import org.spongepowered.api.plugin.Plugin;
 import org.spongepowered.api.text.Text;
 import stazthebox.sponge.api.SimpleConfig;
+import stazthebox.sponge.api.UserUtils;
 import stazthebox.sponge.complainBox.command.commands.CommandClear;
 import stazthebox.sponge.complainBox.command.commands.CommandComplain;
 import stazthebox.sponge.complainBox.command.commands.CommandList;
@@ -90,7 +91,7 @@ public class ComplainBox {
         // /complaints
         val list = CommandSpec.builder().
                 description(Text.of("List all of the complaints of a player")).
-                permission("complainbox.view").
+                permission("complainbox.list").
                 arguments(GenericArguments.optional(GenericArguments.onlyOne(GenericArguments.user(Text.of("user"))))).
                 executor(new CommandList()).
                 build();
@@ -140,6 +141,9 @@ public class ComplainBox {
                 val complainNode = userNode.getAppendedNode();
                 complainNode.getNode("complaint").setValue(complaint.getComplaint());
                 complainNode.getNode("time").setValue(complaint.getTime());
+                complainNode.setComment(
+                        UserUtils.toName(uuid)
+                );
             }
         }
 

@@ -66,7 +66,7 @@ public class CommandClear extends StazCommand {
 
     @Override
     public CommandSpec.Builder modifyBuilder(CommandSpec.Builder builder) {
-        return builder.permission("stazthebox.complainBox.complain.clear").
+        return builder.permission("complainbox.clear").
                 description(Text.of("Clears the complaints of a player, or all if no player is selected.")).
                 arguments(GenericArguments.onlyOne(GenericArguments.optional(GenericArguments.user(Text.of("player")))));
     }

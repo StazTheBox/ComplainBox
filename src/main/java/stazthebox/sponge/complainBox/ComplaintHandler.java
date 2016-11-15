@@ -53,7 +53,7 @@ public class ComplaintHandler {
             getComplaints(uuid).addAll(complaints);
 
         } catch (IllegalArgumentException | ObjectMappingException e) {
-            ComplainBox.getInstance().getLogger().warn("Improper configuration! Ignoring map for: " + uuidStr, e);
+            ComplainBox.getLogger().warn("Improper configuration! Ignoring map for: " + uuidStr, e);
         }
     }
 

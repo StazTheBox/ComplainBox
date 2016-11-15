@@ -40,5 +40,5 @@ public class TextTemplates {
     NUMBER_OF_COMPLAINTS_CLEARED_ALL = of(PREFIX, CONSTANT, "You have cleared ", arg("number", DATA), CONSTANT,
             " complaints."),
             COMPLAINT_SUCCSESSFULL = of(PREFIX, CONSTANT, "Complaint Successfull. ",
-                    arg("user", DATA), CONSTANT, " now has");
+                    arg("user", DATA), CONSTANT, " now has ", arg("number", DATA), " complaints.");
 }

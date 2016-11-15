@@ -16,6 +16,10 @@ public class UserUtils {
         return Sponge.getServiceManager().provide(UserStorageService.class).get().get(uuid);
     }
 
+    public static String toName(UUID uuid) {
+        return toUser(uuid).get().getName();
+    }
+
     public static UserStorageService getUserService() {
         return Sponge.getServiceManager().provide(UserStorageService.class).get();
     }
