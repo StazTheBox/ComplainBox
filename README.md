@@ -8,8 +8,8 @@ Just pop it into your plugins folder and go!
 # Commands
 * / complain [user] [complaint]. Complain about the user and what they have done.
 * /complaints complain [user] [user] - Alias to /complain
-..* list [user] - View the complaints for this user. If user is omitted, view how many complaints everyone has.
-..* clear [user] - Clear all complaints for this user. If user is omitted, clear all of the complaints.
+  * list [user] - View the complaints for this user. If user is omitted, view how many complaints everyone has.
+  * clear [user] - Clear all complaints for this user. If user is omitted, clear all of the complaints.
 
 # Permissions
 * complainbox.list
